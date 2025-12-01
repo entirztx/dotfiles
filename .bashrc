@@ -2,8 +2,10 @@
 ##             my .bashrc             ##
 ########################################
 
+# homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # bash integration of cli tools
-[ -x "$(command -v brew)" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -x "$(command -v starship)" ] && eval "$(starship init bash)"
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init --cmd cd bash)"
 eval "$(fzf --bash)"
@@ -18,6 +20,7 @@ export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS='--preview "head {}"' # disable FZF preview
 
+# alias
 if [[ -x $(command -v eza) ]]; then
 	alias ls='eza --icons'
 	alias l='eza --icons --sort Name'
@@ -27,3 +30,5 @@ else
 	alias ls='ls --color=auto'
 	alias lh='ls -alhrt --time-style=long-iso'
 fi
+
+alias vim='nvim'
